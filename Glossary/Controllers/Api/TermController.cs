@@ -1,10 +1,6 @@
 ﻿using Glossary.Models.Glossary;
-using Glossary.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Newtonsoft.Json;
-using System.Text;
 
 namespace Glossary.Controllers.Api
 {

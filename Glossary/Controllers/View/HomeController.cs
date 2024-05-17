@@ -1,25 +1,24 @@
-﻿using Glossary.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Glossary.Controllers.View
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
         public IActionResult Index()
         {
+            ViewBag.Title = "Term and Definition List";
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Edit()
         {
+            ViewBag.Title = "Edit Term and Definition";
+            return View();
+        }
+
+        public IActionResult Add()
+        {
+            ViewBag.Title = "Add Term and Definition";
             return View();
         }
     }

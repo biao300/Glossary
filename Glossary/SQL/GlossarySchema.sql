@@ -1,3 +1,12 @@
+use master
+go
+alter database [Glossary] set single_user with rollback immediate
+go
+drop database [Glossary]
+go
+
+
+
 CREATE DATABASE [Glossary]
 GO
 
@@ -6,13 +15,13 @@ GO
 
 CREATE TABLE [Term](
 	[Id] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	[Name] [varchar](200) NULL,
+	[Name] [varchar](50) NULL,
 )
 GO
 
 CREATE TABLE [Definition](
 	[Id] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	[Description] [varchar](max) NULL,
+	[Description] [varchar](1000) NULL,
 	[TermId] [int] UNIQUE NOT NULL,
 )
 GO

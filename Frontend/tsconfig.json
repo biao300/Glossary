@@ -13,8 +13,8 @@
         "downlevelIteration": true,
         "allowJs": true,
         "allowSyntheticDefaultImports": true,
-      },
+    },
     "exclude": [
-      "webpack.config.js"
+        "webpack.config.js"
     ]
 }
