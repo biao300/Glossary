@@ -11,7 +11,7 @@ namespace Glossary.Repositories
 
         public List<Term> GetAllTerms()
         {
-            return dbGlossary.Terms.Where(t => t.Name != null).ToList();
+            return dbGlossary.Terms.Where(t => t.Name != null).OrderBy(t => t.Name).ToList();
         }
 
         public List<Term> GetTermsBySearch(string name)

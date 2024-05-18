@@ -6,12 +6,13 @@ namespace Glossary.Controllers.Api
 {
     public class TermBodyModel
     {
+        // for interact with frontend
         public int id;
-        public string name { get; set; }
+        public string term { get; set; }
         public string definition {  get; set; }
         public TermBodyModel() 
         {
-            name = "";
+            term = "";
             definition = "";
         }
     }
@@ -25,7 +26,19 @@ namespace Glossary.Controllers.Api
         {
             bool successful = true;
             string message = "";
-            List<Term> result = tr.GetAllTerms();
+            List<TermBodyModel> result = new List<TermBodyModel>();
+
+            List<Term> terms = tr.GetAllTerms();
+            foreach (Term term in terms)
+            {
+                term.Definition = dr.GetDefinitionByTermId(term.Id);
+
+                result.Add(new TermBodyModel { 
+                    id = term.Id,
+                    term = term.Name,
+                    definition = term.Definition.Description
+                });
+            }
 
             return Content(JsonConvert.SerializeObject(new { successful, message, result }));
         }
@@ -35,7 +48,17 @@ namespace Glossary.Controllers.Api
         {
             bool successful = true;
             string message = "";
-            Term? result = tr.GetTermById(id);
+            TermBodyModel result = new TermBodyModel();
+
+            Term? term = tr.GetTermById(id);
+            if (term != null)
+            {
+                term.Definition = dr.GetDefinitionByTermId(id);
+
+                result.id = term.Id;
+                result.term = term.Name;
+                result.definition = term.Definition.Description;
+            }
 
             return Content(JsonConvert.SerializeObject(new { successful, message, result }));
         }
@@ -52,7 +75,7 @@ namespace Glossary.Controllers.Api
 
             if (term != null)
             {
-                result.Name = term.name;
+                result.Name = term.term;
                 result = tr.CreateTerm(result);
 
                 if (term.definition != null)
@@ -79,7 +102,7 @@ namespace Glossary.Controllers.Api
             if (term != null)
             {
                 result.Id = term.id;
-                result.Name = term.name;
+                result.Name = term.term;
                 result = tr.UpdateTerm(result);
 
                 if (term.definition != null)

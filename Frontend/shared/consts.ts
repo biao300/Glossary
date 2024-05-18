@@ -1,0 +1,1 @@
+export const API_URL_TERMS = `https://localhost:7079/api/terms`;

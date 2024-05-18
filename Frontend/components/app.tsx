@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import TermDefinitionList from './termDefinitionList';
-import TermDefinitionAdd from './termDefinitionAdd';
-import TermDefinitionEdit from './termDefinitionEdit';
+import TermDefinitionList from './pages/termDefinitionList';
+import TermDefinitionAdd from './pages/termDefinitionAdd';
+import TermDefinitionEdit from './pages/termDefinitionEdit';
 
 export default function App() {
     return(<div>

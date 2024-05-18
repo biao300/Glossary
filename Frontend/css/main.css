@@ -1,0 +1,29 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+  
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.form-control {
+    display: block;
+    border: 1px solid #666666;
+    margin: 20px 20px;
+}
+
+.error-item {
+    border: red 2px solid;
+}
+
+.error-msg {
+    color: red; 
+}
