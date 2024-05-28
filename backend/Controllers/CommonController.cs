@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
 
-namespace Glossary.Controllers.Api
+namespace Glossary.Controllers
 {
     public class CommonController : ControllerBase
     {

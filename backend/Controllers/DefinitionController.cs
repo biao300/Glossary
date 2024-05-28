@@ -1,11 +1,13 @@
 ﻿using Glossary.Models.Glossary;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace Glossary.Controllers.Api
+namespace Glossary.Controllers
 {
-    [Route("api/definitions")]
+    [Route("definitions")]
     [ApiController]
+    [EnableCors]
     public class DefinitionController : CommonController
     {
         [HttpGet("{id}")]

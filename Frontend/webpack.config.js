@@ -15,28 +15,33 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
     output: {
-        path: path.resolve(__dirname, '../Glossary/wwwroot/dist'),
+        path: path.resolve(__dirname, './deploy/dist'),
         filename: '[name].js',
     },
     module: {
-        rules: [{
-            test: /\.js$/,
-            use: {
-                loader: 'babel-loader',
-                options: {
-                    presets: ['@babel/preset-react']
+        rules: [
+            {
+                test: /\.js$/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-react']
+                    }
                 }
-            }
-        },
-        {
-            test: /\.css$/i,
-            loader: 'css-loader',
-        },
-        {
-            test: /\.tsx?$/,
-            use: 'ts-loader',
-            exclude: /node_modules/,
-        },
+            },
+            {
+                test: /\.css$/i,
+                use: [
+                    {
+                        loader: 'css-loader'
+                    }
+                ]
+            },
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
         ]
     },
     plugins: [

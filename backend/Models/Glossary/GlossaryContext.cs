@@ -35,10 +35,12 @@ namespace Glossary.Models.Glossary
             {
                 entity.ToTable("Definition");
 
-                entity.HasIndex(e => e.TermId, "UQ__Definiti__410A21A4E6531BCB")
+                entity.HasIndex(e => e.TermId, "UQ__Definiti__410A21A44F3DC1C9")
                     .IsUnique();
 
-                entity.Property(e => e.Description).IsUnicode(false);
+                entity.Property(e => e.Description)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false);
 
                 entity.HasOne(d => d.Term)
                     .WithOne(p => p.Definition)
@@ -52,7 +54,7 @@ namespace Glossary.Models.Glossary
                 entity.ToTable("Term");
 
                 entity.Property(e => e.Name)
-                    .HasMaxLength(200)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
             });
 

@@ -1,15 +1,16 @@
 ﻿using Glossary.Models.Glossary;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace Glossary.Controllers.Api
+namespace Glossary.Controllers
 {
     public class TermBodyModel
     {
         // for interact with frontend
         public int id;
-        public string term { get; set; }
-        public string definition {  get; set; }
+        public string? term { get; set; }
+        public string? definition {  get; set; }
         public TermBodyModel() 
         {
             term = "";
@@ -17,8 +18,9 @@ namespace Glossary.Controllers.Api
         }
     }
 
-    [Route("api/terms")]
+    [Route("terms")]
     [ApiController]
+    [EnableCors]
     public class TermController : CommonController
     {
         [HttpGet]
@@ -36,7 +38,7 @@ namespace Glossary.Controllers.Api
                 result.Add(new TermBodyModel { 
                     id = term.Id,
                     term = term.Name,
-                    definition = term.Definition.Description
+                    definition = term.Definition != null ? term.Definition.Description : ""
                 });
             }
 
@@ -57,7 +59,7 @@ namespace Glossary.Controllers.Api
 
                 result.id = term.Id;
                 result.term = term.Name;
-                result.definition = term.Definition.Description;
+                result.definition = term.Definition != null ?  term.Definition.Description : "";
             }
 
             return Content(JsonConvert.SerializeObject(new { successful, message, result }));

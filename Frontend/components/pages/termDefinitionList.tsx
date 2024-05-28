@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Modal } from 'antd';
 
-import { API_URL_TERMS } from '../../shared/consts';
-
+import { API_URL_TERMS, ROUTER_URL_TERM_ADD, ROUTER_URL_TERM_EDIT } from '../../shared/consts';
 
 export default function TermDefinitionList() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,9 +14,10 @@ export default function TermDefinitionList() {
         fetch(API_URL_TERMS, {
             method: 'GET',
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             }
         }).then((res) => {
+            console.log("get term list data result 1: ", res);
             res.json().then((jres) => {
                 console.log("get term list data result: ", jres);
                 setTermDefinitionList(jres.result);
@@ -63,7 +63,7 @@ export default function TermDefinitionList() {
 
     return (<>
         <h2>List of terms and definitions</h2>
-        <a href="/home/add">Add new term</a>
+        <a href={ROUTER_URL_TERM_ADD}>Add new term</a>
         <table>
             <thead>
                 <tr>
@@ -75,17 +75,18 @@ export default function TermDefinitionList() {
             </thead>
             <tbody>
             {
-                termDefinitionList.map((e, index) => {
-                    return <tr key={index}>
-                        <td>{e.term}</td>
-                        <td>{e.definition}</td>
-                        <td><a href={`/home/edit?id=${e.id}`}>Edit</a></td>
-                        <td><button onClick={() => {
-                            setModalContent(`Are you sure to delete term "${e.term}" and its definition?`);
-                            showModal(e.id);
-                        }}>Delete</button></td>
-                    </tr>
-                })
+                termDefinitionList.length > 0 ?
+                    termDefinitionList.map((e, index) => {
+                        return <tr key={index}>
+                            <td>{e.term}</td>
+                            <td>{e.definition}</td>
+                            <td><a href={`${ROUTER_URL_TERM_EDIT}?id=${e.id}`}>Edit</a></td>
+                            <td><button onClick={() => {
+                                setModalContent(`Are you sure to delete term "${e.term}" and its definition?`);
+                                showModal(e.id);
+                            }}>Delete</button></td>
+                        </tr>
+                    }) : `Loading data...`
             }
             </tbody>
         </table>

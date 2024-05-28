@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import TextAreaField from 'components/form/textarea';
-import { API_URL_TERMS } from '../../shared/consts';
+import { ROUTER_URL_HOME, API_URL_TERMS } from '../../shared/consts';
 
 
 export default function TermDefinitionEdit() {
@@ -119,6 +119,6 @@ export default function TermDefinitionEdit() {
 
         <p><input type="submit" value='Update' /></p>
         <p>{formMessage}</p>
-        <p><a href="/home">Back to Term List</a></p>
+        <p><a href={ROUTER_URL_HOME}>Back to Term List</a></p>
     </form>)
 }

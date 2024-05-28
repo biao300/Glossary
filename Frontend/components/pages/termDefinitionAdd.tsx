@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import TextAreaField from 'components/form/textarea';
-import { API_URL_TERMS } from '../../shared/consts';
+import { ROUTER_URL_HOME, API_URL_TERMS } from '../../shared/consts';
 
 
 export default function TermDefinitionAdd() {
@@ -96,6 +96,6 @@ export default function TermDefinitionAdd() {
 
         <p><input type="submit" value='Add' /></p>
         <p>{formMessage}</p>
-        <p><a href="/home">Back to Term List</a></p>
+        <p><a href={ROUTER_URL_HOME}>Back to Term List</a></p>
     </form>)
 }
