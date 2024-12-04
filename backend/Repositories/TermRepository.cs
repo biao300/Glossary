@@ -1,4 +1,5 @@
-using Glossary.Models.Glossary;
+//using Glossary.Models.Glossary;
+using Glossary.Models.GlossaryLite;
 
 namespace Glossary.Repositories
 {

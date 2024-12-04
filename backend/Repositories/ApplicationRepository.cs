@@ -1,4 +1,5 @@
-using Glossary.Models.Glossary;
+//using Glossary.Models.Glossary;
+using Glossary.Models.GlossaryLite;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using System;

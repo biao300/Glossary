@@ -1,4 +1,6 @@
-﻿using Glossary.Models.Glossary;
+﻿//using Glossary.Models.Glossary;
+using Glossary.Models.GlossaryLite;
+
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
